@@ -1,0 +1,33 @@
+= paginate @records, theme: 'twitter-bootstrap-4'
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:name)
+      - decorator_class.list_attributes.each do |attribute|
+        %th= model_class.human_attribute_name attribute
+      %th= t 'helpers.links.actions'
+  %tbody
+    - @records.each_with_index do |record, index|
+      %tr
+        %td
+          = link_to record.id, current_model_record_path(record.id)
+        %td
+          = link_to record.name, current_model_record_path(record.id)
+        - decorator_class.list_attributes.each do |attribute|
+          %td
+            = record.send attribute
+        %td.actions
+          .row
+            &nbsp;&nbsp;&nbsp;
+            = link_to fa_icon('pencil-alt'), edit_current_model_record_path(record.id), class: 'btn btn-warning btn-xs'
+            &nbsp;&nbsp;
+            = delete_button url: current_model_record_path(record.id), form_options: { class: :smart_button }, button_options: { class: 'btn btn-xs btn-danger' } do
+              = fa_icon 'trash-alt'
+          %br
+          %br
+          .btn-group{ data: { toggle: :buttons } }
+            - record.model.class.state_machines.keys.each do |state_method|
+              - unless state_method == :state
+                = state_events_buttons record, state_method: state_method, model_param_name: :record, controller: 'tramway/admin/records', action: :update, parameters: { redirect: current_model_records_path(page: params[:page], scope: params[:scope], filter: params[:filter], focus: focus_selector(index)), model: record.class.model_name }, button_options: { class: :smart_button }
+= paginate @records, theme: 'twitter-bootstrap-4'

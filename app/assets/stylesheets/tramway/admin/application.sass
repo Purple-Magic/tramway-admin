@@ -1,0 +1,48 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import 'tramway/core/application'
+@import 'tramway/user/application'
+@import 'selectize'
+@import 'bootstrap'
+
+.container
+  padding-top: 2rem
+
+td.actions
+  width: 8rem
+
+.icon-in-navbar
+  font-size: 15pt
+
+.notifications
+  a
+    margin-right: 25px
+    span.badge:hover
+      filter: brightness(90%)
+
+.smart_button
+  float: right
+  margin-bottom: 0
+
+.scrollable
+  height: auto
+  max-height: 30em
+  overflow-x: hidden
+
+.row-fluid.filters
+  width: 100%
+  display: flex
+
+  select
+    width: 100%
+
+  .submit
+    display: flex
+    flex-direction: row-reverse
+
+  .dates_filter
+    display: flex
+    flex-direction: row
