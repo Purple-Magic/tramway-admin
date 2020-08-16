@@ -1,5 +1,6 @@
 # Tramway::Admin
-Short description and motivation.
+
+Create admin panel for your FAST!
 
 ## English readme
 
