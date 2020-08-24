@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
+  s.add_dependency 'tramway-core', '1.18.3.4'
+  s.add_dependency 'tramway-auth', '2.0.1'
   s.add_dependency 'bootstrap-kaminari-views', '0.0.5'
   s.add_dependency 'copyright_mafa', '~> 0.1.2', '>= 0.1.2'
   s.add_dependency 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
@@ -27,4 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'smart_buttons', '>= 1.0'
   s.add_dependency 'state_machine_buttons', '>= 1.0'
   s.add_dependency 'trap', '3.0'
+
+  s.add_development_dependency 'pg'
 end
