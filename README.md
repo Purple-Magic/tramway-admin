@@ -1,6 +1,6 @@
 # Tramway::Admin
 
-Create admin panel for your FAST!
+Create admin panel for your application FAST!
 
 ## English readme
 
