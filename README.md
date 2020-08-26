@@ -11,7 +11,6 @@ How to use my plugin.
 ```ruby
 gem 'tramway-admin'
 gem 'tramway-auth'
-gem 'tramway-core'
 gem 'tramway-user'
 gem 'state_machine', github: 'seuros/state_machine'
 gem 'bcrypt'
