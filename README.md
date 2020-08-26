@@ -2,14 +2,6 @@
 
 Create admin panel for your application FAST!
 
-## English readme
-
-*If you need translation of this Readme, please message us kalashnikov@ulmic.ru. We'll translate for you and post to this page*
-
-## Russian readme
-
-Готовая админка для проекта. Она подготовлена для работы со всеми tramway плагинами, а также поддерживает и ваши модели тоже.
-
 ## Usage
 How to use my plugin.
 
