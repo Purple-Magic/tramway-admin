@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'tramway/core'
 require 'tramway/admin/engine'
 require 'tramway/admin/singleton_models'
 require 'tramway/admin/records_models'
