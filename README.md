@@ -99,6 +99,10 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
       [ :all, :scope1, :scope2 ]
     end
     
+    def list_attributes
+      [ :begin_date, :end_date ]
+    end
+    
     def list_filters
       {
         filter_name: {
@@ -127,6 +131,7 @@ end
 * `list_filters` method returns hash of filters where:
   * select_collection - collection which will be in the select of filter. It must be compatible with [options_for_select](https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/options_for_select) method
   * query - some Active Record query which be used as a filter of records
+* `list_attributes` method returns array of attributes which will be shown in index page
 
 Filters naming:
 
