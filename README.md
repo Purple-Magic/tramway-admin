@@ -122,7 +122,7 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
     end
   end
   
-  delegate :title, to: :object
+  delegate_attributes :title
 end
 ```
 
