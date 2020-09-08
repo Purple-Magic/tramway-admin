@@ -94,6 +94,8 @@ Tramway::Admin.navbar_structure(
 *app/decorators/your_model_decorator.rb*
 ```ruby
 class YourModelDecorator < Tramway::Core::ApplicationDecorator
+  decorate_associations :messages, :posts
+  
   class << self
     def collections
       [ :all, :scope1, :scope2 ]
@@ -105,6 +107,10 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
     
     def show_attributes
       [ :begin_date, :end_date ]
+    end
+    
+    def show_associations
+      [ :messages ]
     end
     
     def list_filters
@@ -137,6 +143,7 @@ end
   * query - some Active Record query which be used as a filter of records
 * `list_attributes` method returns array of attributes which will be shown in index page. If empty only `name` will be shown
 * `show_attributes` method returns array of attributes which will be shown in show page. If empty all attributes of the model will be shown
+* `show_associations` method returns array of decorated associations which will be show in show page. If empty no associations will be shown
 
 Filters naming:
 
