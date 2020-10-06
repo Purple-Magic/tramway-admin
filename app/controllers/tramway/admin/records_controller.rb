@@ -5,7 +5,12 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     scope = params[:scope].present? ? params[:scope] : :all
     records = model_class.active.order(id: :desc).send scope
     records = records.full_text_search params[:search] if params[:search].present?
-    records = records.ransack(params[:filter]).result if params[:filter].present?
+    if params[:filter].present?
+      if params[:filter].is_a? String
+        params[:filter] = JSON.parse params[:filter]
+      end
+      records = records.ransack(params[:filter]).result 
+    end
     params[:list_filters]&.each do |filter, value|
       case decorator_class.list_filters[filter.to_sym][:type]
       when :select

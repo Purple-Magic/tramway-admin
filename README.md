@@ -11,7 +11,6 @@ How to use my plugin.
 ```ruby
 gem 'tramway-admin'
 gem 'tramway-auth'
-gem 'tramway-core'
 gem 'tramway-user'
 gem 'state_machine', github: 'seuros/state_machine'
 gem 'bcrypt'
@@ -95,9 +94,23 @@ Tramway::Admin.navbar_structure(
 *app/decorators/your_model_decorator.rb*
 ```ruby
 class YourModelDecorator < Tramway::Core::ApplicationDecorator
+  decorate_associations :messages, :posts
+  
   class << self
     def collections
       [ :all, :scope1, :scope2 ]
+    end
+    
+    def list_attributes
+      [ :begin_date, :end_date ]
+    end
+    
+    def show_attributes
+      [ :begin_date, :end_date ]
+    end
+    
+    def show_associations
+      [ :messages ]
     end
     
     def list_filters
@@ -119,7 +132,7 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
     end
   end
   
-  delegate :title, to: :object
+  delegate_attributes :title
 end
 ```
 
@@ -128,6 +141,9 @@ end
 * `list_filters` method returns hash of filters where:
   * select_collection - collection which will be in the select of filter. It must be compatible with [options_for_select](https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/options_for_select) method
   * query - some Active Record query which be used as a filter of records
+* `list_attributes` method returns array of attributes which will be shown in index page. If empty only `name` will be shown
+* `show_attributes` method returns array of attributes which will be shown in show page. If empty all attributes of the model will be shown
+* `show_associations` method returns array of decorated associations which will be show in show page. If empty no associations will be shown
 
 Filters naming:
 
