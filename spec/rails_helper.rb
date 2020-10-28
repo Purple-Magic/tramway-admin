@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 require 'factory_bot'
+require 'capybara_helpers'
 require 'support/errors_helper'
-require 'support/capybara_helpers'
 require 'support/navbar_helper'
 require 'support/tramway_helpers'
 require 'support/date_picker_helper'

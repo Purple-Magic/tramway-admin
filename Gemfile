@@ -11,6 +11,7 @@ group :test do
   gem 'whenever-test'
 
   gem 'capybara', '>= 2.15'
+  gem 'capybara_helpers', github: 'purple-magic/capybara_helpers'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'faker'
   gem 'json_api_test_helpers', '1.2'
