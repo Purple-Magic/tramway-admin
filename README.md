@@ -255,6 +255,35 @@ Here docs about changing roles of `Tramway::User::User` model [Readme](https://g
 
 ## Associations management
 
+### has_many
+
+We have models Game and Packs.
+
+*app/models/game.rb*
+```ruby
+class Game < Tramway::Core::ApplicationRecord
+  has_many :packs
+end
+```
+
+*app/models/pack.rb*
+```ruby
+class Pack < Tramway::Core::ApplicationRecord
+  belongs_to :game
+end
+```
+
+**You want to manage packs in the Game show admin page**
+
+#### 1. Add association to PackDecorator
+
+*app/decorators/pack_decorator.rb*
+```ruby
+class GameDecorator < Tramway::Core::ApplicationDecorator
+  decorate_association :packs, as: :game # we recommend you to add association name in Pack model. You need it if association name of Game in Pack is not `game`
+end
+```
+
 ### has_and_belongs_to_many
 
 We have models Game and Packs.
