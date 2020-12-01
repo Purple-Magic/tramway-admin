@@ -1,4 +1,4 @@
-# Tramway::Admin
+# ![tramway-ico](https://raw.githubusercontent.com/kalashnikovisme/kalashnikovisme/master/%D1%82%D1%80%D1%8D%D0%BC%D0%B2%D1%8D%D0%B9%D0%B1%D0%B5%D0%B7%D1%84%D0%BE%D0%BD%D0%B0-min.png) Tramway::Admin
 
 Create admin panel for your application FAST!
 
@@ -254,6 +254,35 @@ You can set conditions for functions which are available for any role:
 Here docs about changing roles of `Tramway::User::User` model [Readme](https://github.com/ulmic/tramway-dev/tree/develop/tramway#if-you-want-to-edit-roles-to-the-tramwayuseruser-class)
 
 ## Associations management
+
+### has_many
+
+We have models Game and Packs.
+
+*app/models/game.rb*
+```ruby
+class Game < Tramway::Core::ApplicationRecord
+  has_many :packs
+end
+```
+
+*app/models/pack.rb*
+```ruby
+class Pack < Tramway::Core::ApplicationRecord
+  belongs_to :game
+end
+```
+
+**You want to manage packs in the Game show admin page**
+
+#### 1. Add association to PackDecorator
+
+*app/decorators/pack_decorator.rb*
+```ruby
+class GameDecorator < Tramway::Core::ApplicationDecorator
+  decorate_association :packs, as: :game # we recommend you to add association name in Pack model. You need it if association name of Game in Pack is not `game`
+end
+```
 
 ### has_and_belongs_to_many
 

@@ -47,7 +47,7 @@ module Tramway
               end
             end
           end
-          hash.merge! collection => records.count
+          hash.merge! collection => records.send("#{current_admin.role}_scope", current_admin.id).count
         end
       end
 
