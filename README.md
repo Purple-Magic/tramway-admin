@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 end
 ```
 
-#### 4. Then make `tramway-core` installation. [How-to](https://github.com/ulmic/tramway-dev/blob/develop/tramway-core/README.md#installation)
+#### 4. Then make `tramway-core` installation. [How-to](https://github.com/Purple-Magic/tramway-core/blob/develop/README.md#installation)
 
 
 #### 5. And then execute:
