@@ -92,7 +92,12 @@ module Tramway
       end
 
       def admin_form_class
-        "::#{current_admin.role.camelize}::#{model_class}Form".constantize
+        class_name = "::#{current_admin.role.camelize}::#{model_class}Form"
+        if defined? class_name
+          class_name.constantize
+        else
+          raise "Tramway::Admin - you should create form for role `#{current_admin.role}` to edit #{model_class} model. It should be named #{class_name}"
+        end
       end
 
       def model_given?
