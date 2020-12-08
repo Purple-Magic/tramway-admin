@@ -192,7 +192,13 @@ class Admin::YourModelForm < Tramway::Core::ApplicationForm
         logo: :file,
         description: :ckeditor,
         date: :date_picker,
-        text: :text
+        text: :text,
+        birth_date: {
+          type: :default,
+          input_options: {
+            hint: 'It should be more than 18'
+          }
+        }
     end
   end
 end
