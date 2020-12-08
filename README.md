@@ -446,8 +446,9 @@ en:
         my_dropdown: Very important dropdown
 ```
 
-## Contributing
-Contribution directions go here.
+## Errors
+
+* `Model or Form is not available` - `params[:model]` or `params[:form]` is empty **OR** current user does not have access to model or form in `params[:model]` or `params[:form]`
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
