@@ -32,6 +32,9 @@
 
       %ul.nav.navbar-nav.ml-auto
         - if current_admin
+          %li.nav-item
+            %span.nav-link
+              = "#{current_admin.first_name} #{current_admin.last_name}"
           - if @notifications_count.present?
             - if @notifications_count > 0
               %li.nav-item.dropdown.notifications
