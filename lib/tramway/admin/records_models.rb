@@ -7,9 +7,9 @@ module Tramway::Admin::RecordsModels
     @available_models[project][role] ||= {}
     models.each do |model|
       if model.class == Class || model.class == String
-        @available_models[project][role].merge! model => %i[index show update create destroy]
+        @available_models[project][role].merge! model.to_s => %i[index show update create destroy]
       elsif model.class == Hash
-        @available_models[project][role].merge! model
+        @available_models[project][role].merge! model.to_s
       end
     end
     @available_models = @available_models.with_indifferent_access

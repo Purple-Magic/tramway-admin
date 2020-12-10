@@ -9,7 +9,7 @@ module Tramway::Admin::Navbar
   def navbar_items_for(project, role:)
     project = project.underscore.to_sym unless project.is_a? Symbol
     @navbar_structure[project]&.map do |item|
-      if item.is_a? Class
+      if item.is_a?(Class) || item.is_a?(String)
         should_be_in_navbar_as item, project, role
       elsif item.is_a? Hash
         sub_items = item.values.first.map do |sub_item|
@@ -23,10 +23,10 @@ module Tramway::Admin::Navbar
   private
 
   def should_be_in_navbar_as(item, project, role)
-    if singleton_models_for(project, role: role).include?(item)
-      { item => :singleton }
-    elsif available_models_for(project, role: role).include?(item)
-      { item => :record }
+    if singleton_models_for(project, role: role).map(&:to_s).include?(item.to_s)
+      { item.to_s => :singleton }
+    elsif available_models_for(project, role: role).map(&:to_s).include?(item.to_s)
+      { item.to_s => :record }
     elsif item.is_a? Symbol
       :divider
     end
