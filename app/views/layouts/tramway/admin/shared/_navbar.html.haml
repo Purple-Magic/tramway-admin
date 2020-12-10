@@ -11,8 +11,8 @@
         %ul.navbar-nav
           - ::Tramway::Admin.navbar_items_for(@application_engine || @application.name, role: current_admin.role)&.each do |item|
             - case item.keys.first
-            - when Class
-              - model = item.keys.first
+            - when Class, String
+              - model = item.keys.first.is_a?(String) ? item.keys.first.constantize : item.keys.first
               - case item.values.first
               - when :singleton
                 = model_menu_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)

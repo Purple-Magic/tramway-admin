@@ -7,9 +7,9 @@ module Tramway::Admin::SingletonModels
     @singleton_models[project][role] ||= {}
     models.each do |model|
       if model.class == Class
-        @singleton_models[project][role].merge! model => %i[index show update create destroy]
+        @singleton_models[project][role].merge! model.to_s => %i[index show update create destroy]
       elsif model.class == Hash
-        @singleton_models[project][role].merge! model
+        @singleton_models[project][role].merge! model.to_s
       end
     end
     @singleton_models = @singleton_models.with_indifferent_access
