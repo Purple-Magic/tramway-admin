@@ -88,31 +88,46 @@ Tramway::Admin.navbar_structure(
   project: :your_application_name
 )
 ```
+#### 9. Create decorators and forms for all available_models.
+You can run generator that will create all necessary files
+```bash
+$ rails g tramway:admin:install
+```
+Or generate decorator and form for only one model
+```bash
+$ rails g tramway:admin:model Coworking
+```
+If you're using several user roles in your admin dashboard, then you can specify scope for the form(default scope is `admin`)
+```bash
+$ rails g tramway:admin:install --user-role=partner
+```
 
-#### 9. Create decorator for models
+Or you can create forms and decorators manually as it written below:
+
+#### 9a. Create decorator for models [manual option]
 
 *app/decorators/your_model_decorator.rb*
 ```ruby
 class YourModelDecorator < Tramway::Core::ApplicationDecorator
   decorate_associations :messages, :posts
-  
+
   class << self
     def collections
       [ :all, :scope1, :scope2 ]
     end
-    
+
     def list_attributes
       [ :begin_date, :end_date ]
     end
-    
+
     def show_attributes
       [ :begin_date, :end_date ]
     end
-    
+
     def show_associations
       [ :messages ]
     end
-    
+
     def list_filters
       {
         filter_name: {
@@ -131,7 +146,7 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
       }
     end
   end
-  
+
   delegate_attributes :title
 end
 ```
@@ -171,15 +186,7 @@ en:
             end_date Your end date filter
 ```
 
-#### 10. Add inheritance to YourModel
-
-*app/models/your_model.rb*
-```ruby
-class YourModel < Tramway::Core::ApplicationRecord
-end
-```
-
-#### 11. Create `Admin::YourModelForm`
+#### 9b. Create `Admin::YourModelForm` [manual option]
 
 *app/forms/admin/your_model_form.rb
 ```ruby
@@ -204,7 +211,15 @@ class Admin::YourModelForm < Tramway::Core::ApplicationForm
 end
 ```
 
-### 12. You can add search to your index page
+#### 10. Add inheritance to YourModel
+
+*app/models/your_model.rb*
+```ruby
+class YourModel < Tramway::Core::ApplicationRecord
+end
+```
+
+### 11. You can add search to your index page
 
 Tramway use gem [PgSearch](https://github.com/Casecommons/pg_search`) as search engine
 
