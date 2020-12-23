@@ -471,5 +471,36 @@ en:
 
 * **Model or Form is not available** - `params[:model]` or `params[:form]` is empty **OR** current user does not have access to model or form in `params[:model]` or `params[:form]`
 
+## Good features
+
+### Get actions log in admin panel
+
+Tramway uses [audited](https://github.com/collectiveidea/audited) to log actions of models. That's why all we need it's creating view for model `Audited::Audit`
+
+#### 1. Add Audited::Audit model to available models
+
+*config/initializers/tramway.rb*
+```
+Tramway::Admin.set_available_models(
+  Audited::Audit,
+  project: :your_project_name
+)
+```
+
+#### 2. Add this model to navbar
+
+```
+Tramway::Admin.set_navbar_structure(
+  Audited::Audit,
+  project: :your_project_name
+)
+```
+
+#### 3. Generate decorator for Audited::Audit
+
+```
+rails g tramway:admin:model Audited::Audit
+```
+
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
