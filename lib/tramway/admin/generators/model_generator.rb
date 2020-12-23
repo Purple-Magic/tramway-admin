@@ -25,14 +25,14 @@ module Tramway
         def run_decorator_generator
           template(
             'decorator.rb.erb',
-            Rails.root.join("app/decorators/#{file_name}_decorator.rb"),
+            Rails.root.join("app/decorators/#{file_path}_decorator.rb"),
           )
         end
 
         def run_forms_generator
           template(
             'form.rb.erb',
-            Rails.root.join("app/forms/#{user_role}/#{file_name}_form.rb"),
+            Rails.root.join("app/forms/#{user_role}/#{file_path}_form.rb"),
           )
         end
 
