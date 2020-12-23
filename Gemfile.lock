@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tramway-admin (1.32.2.2)
+    tramway-admin (1.32.2.5)
       bootstrap-kaminari-views (= 0.0.5)
       copyright_mafa (~> 0.1.2, >= 0.1.2)
       font-awesome-rails (~> 4.7, >= 4.7.0.1)
@@ -117,7 +117,7 @@ GEM
     crack (0.4.4)
     crass (1.0.6)
     diff-lcs (1.4.4)
-    enumerize (2.3.1)
+    enumerize (2.4.0)
       activesupport (>= 3.2)
     erubi (1.9.0)
     erubis (2.7.0)
