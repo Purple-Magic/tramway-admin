@@ -10,6 +10,7 @@ require 'tramway/admin/notifications'
 require 'tramway/admin/welcome_page_actions'
 require 'tramway/admin/navbar'
 require 'tramway/error'
+require 'tramway/admin/generators/install_generator'
 
 module Tramway
   Auth.layout_path = 'tramway/admin/application'
