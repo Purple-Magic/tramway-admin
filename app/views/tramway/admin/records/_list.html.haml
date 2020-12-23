@@ -24,10 +24,11 @@
             &nbsp;&nbsp;
             = delete_button url: current_model_record_path(record.id), form_options: { class: :smart_button }, button_options: { class: 'btn btn-xs btn-danger' } do
               = fa_icon 'trash-alt'
-          %br
-          %br
-          .btn-group{ data: { toggle: :buttons } }
-            - record.model.class.state_machines.keys.each do |state_method|
-              - unless state_method == :state
-                = state_events_buttons record, state_method: state_method, model_param_name: :record, controller: 'tramway/admin/records', action: :update, parameters: { redirect: current_model_records_path(page: params[:page], scope: params[:scope], filter: params[:filter], focus: focus_selector(index)), model: record.class.model_name }, button_options: { class: :smart_button }
+          - if tramway_model?(model_class)
+            %br
+            %br
+            .btn-group{ data: { toggle: :buttons } }
+              - record.model.class.state_machines.keys.each do |state_method|
+                - unless state_method == :state
+                  = state_events_buttons record, state_method: state_method, model_param_name: :record, controller: 'tramway/admin/records', action: :update, parameters: { redirect: current_model_records_path(page: params[:page], scope: params[:scope], filter: params[:filter], focus: focus_selector(index)), model: record.class.model_name }, button_options: { class: :smart_button }
 = paginate @records, theme: 'twitter-bootstrap-4'
