@@ -28,7 +28,7 @@
                     - if sub_item.values.first == :singleton
                       = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.singleton_path(model: model)
                     - if sub_item.values.first == :record
-                      = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.model_name).capitalize
+                      = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.constantize.model_name).capitalize
 
       %ul.nav.navbar-nav.ml-auto
         - if current_admin
