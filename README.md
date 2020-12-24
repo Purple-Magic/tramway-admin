@@ -239,7 +239,6 @@ class YourModel < Tramway::Core::ApplicationRecord
 #### 12. Run server `rails s`
 #### 13. Launch `localhost:3000/admin`
 
-
 ### CRUDs for models
 
 By default users with role `admin` have access to all models used as arguments in method `::Tramway::Admin.set_available_models`. If you want specify models by roles, use them as keys
@@ -438,6 +437,16 @@ Returns object enumerations as text
 ```ruby
 def field_type
   enumerize_view object.field_type
+end
+```
+
+#### file_view
+Returns file name and button to download it
+
+*app/decorators/\*_decorator.rb*
+```ruby
+def file_download
+  file_view object.file
 end
 ```
 
