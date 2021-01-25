@@ -239,7 +239,6 @@ class YourModel < Tramway::Core::ApplicationRecord
 #### 12. Run server `rails s`
 #### 13. Launch `localhost:3000/admin`
 
-
 ### CRUDs for models
 
 By default users with role `admin` have access to all models used as arguments in method `::Tramway::Admin.set_available_models`. If you want specify models by roles, use them as keys
@@ -392,6 +391,64 @@ to the `app/assets/javascripts/admin/application.js` file
 window.current_locale = window.i18n_locale 'en'
 ```
 to the `app/assets/javascripts/admin/application.js.coffee` file
+
+### Decorator Helper methods
+
+#### date_view
+Returns a date in the format depending on localization
+
+*app/decorators/\*_decorator.rb*
+```ruby
+def created_at
+  date_view object.created_at
+end
+```
+#### datetime_view
+Returns a date and time in the format depending on localization
+
+*app/decorators/*_decorator.rb*
+```ruby
+def created_at
+  datetime_view object.created_at
+end
+```
+#### state_machine_view
+Returns the state of an object according to a state machine
+
+*app/decorators/*_decorator.rb*
+```ruby
+def state
+  state_machine_view object, :state
+end
+```
+#### image_view
+Returns an image in a particular format depending on the parameters of the original image file
+
+*app/decorators/\*_decorator.rb*
+```ruby
+def avatar
+  image_view object.avatar
+end
+```
+#### enumerize_view
+Returns object enumerations as text
+
+*app/decorators/\*_decorator.rb*
+```ruby
+def field_type
+  enumerize_view object.field_type
+end
+```
+
+#### file_view
+Returns file name and button to download it
+
+*app/decorators/\*_decorator.rb*
+```ruby
+def file_download
+  file_view object.file
+end
+```
 
 ## Notifications
 
