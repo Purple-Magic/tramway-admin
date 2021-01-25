@@ -72,17 +72,6 @@ module Tramway
         end
       end
 
-      if Rails.env.production?
-        rescue_from StandardError do |exception|
-          Rails.logger.warn "ERROR MESSAGE: #{exception.message}"
-          Rails.logger.warn "BACKTRACE: #{exception.backtrace.first(30).join("\n")}"
-          Raven.capture_exception exception if defined?(Raven)
-
-          @exception = exception
-          render 'tramway/admin/shared/errors/server_error', status: 500, layout: false
-        end
-      end
-
       include Tramway::ClassNameHelpers
 
       def model_class
