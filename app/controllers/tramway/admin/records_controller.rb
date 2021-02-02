@@ -61,7 +61,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
 
   def destroy
     record = model_class.active.find params[:id]
-    record.remove
+    record.remove!
     redirect_to params[:redirect].present? ? params[:redirect] : records_path
   end
 end

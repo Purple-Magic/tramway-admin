@@ -28,7 +28,8 @@
             %br
             %br
             .btn-group{ data: { toggle: :buttons } }
-              - record.model.class.state_machines.keys.each do |state_method|
-                - unless state_method == :state
-                  = state_events_buttons record, state_method: state_method, model_param_name: :record, controller: 'tramway/admin/records', action: :update, parameters: { redirect: current_model_records_path(page: params[:page], scope: params[:scope], filter: params[:filter], focus: focus_selector(index)), model: record.class.model_name }, button_options: { class: :smart_button }
+              - if record.model.class.aasm.try(:state_machine)
+                - state_machine_name = record.model.class.aasm.try(:state_machine).config.column
+                - unless state_machine_name == :state
+                  = state_events_buttons record, state_method: state_machine_name, model_param_name: :record, controller: 'tramway/admin/records', action: :update, parameters: { redirect: current_model_records_path(page: params[:page], scope: params[:scope], filter: params[:filter], focus: focus_selector(index)), model: record.class.model_name }, button_options: { class: :smart_button }
 = paginate @records, theme: 'twitter-bootstrap-4'
