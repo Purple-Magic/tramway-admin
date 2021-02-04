@@ -537,7 +537,7 @@ Tramway uses [audited](https://github.com/collectiveidea/audited) to log actions
 #### 1. Add Audited::Audit model to available models
 
 *config/initializers/tramway.rb*
-```
+```ruby
 Tramway::Admin.set_available_models(
   Audited::Audit,
   project: :your_project_name
@@ -546,7 +546,7 @@ Tramway::Admin.set_available_models(
 
 #### 2. Add this model to navbar
 
-```
+```ruby
 Tramway::Admin.set_navbar_structure(
   Audited::Audit,
   project: :your_project_name
