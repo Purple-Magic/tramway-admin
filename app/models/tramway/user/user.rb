@@ -2,6 +2,7 @@
 
 class Tramway::User::User < ::Tramway::Core::ApplicationRecord
   has_secure_password # FIXME: remove repeating from tramway-user
+  include ::AASM
 
   enumerize :role, in: %i[user admin], default: :admin
 
