@@ -11,7 +11,7 @@ How to use my plugin.
 ```ruby
 gem 'tramway-admin'
 gem 'tramway-user'
-gem 'state_machine', github: 'seuros/state_machine'
+gem 'aasm'
 gem 'bcrypt'
 gem 'haml-rails'
 gem 'selectize-rails'
