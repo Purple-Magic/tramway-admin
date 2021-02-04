@@ -55,6 +55,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
     if params[:record][:aasm_event].present?
       if @record_form.model.send("may_#{params[:record][:aasm_event]}?")
         @record_form.model.send("#{params[:record][:aasm_event]}!")
+        redirect_to params[:redirect].present? ? params[:redirect] : record_path(@record_form.model)
       end
     else
       if @record_form.submit params[:record]
