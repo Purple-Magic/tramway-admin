@@ -10,7 +10,6 @@ How to use my plugin.
 *Gemfile*
 ```ruby
 gem 'tramway-admin'
-gem 'tramway-auth'
 gem 'tramway-user'
 gem 'state_machine', github: 'seuros/state_machine'
 gem 'bcrypt'
