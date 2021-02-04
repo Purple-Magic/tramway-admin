@@ -52,10 +52,16 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
 
   def update
     @record_form = admin_form_class.new model_class.active.find params[:id]
-    if @record_form.submit params[:record]
-      redirect_to params[:redirect].present? ? params[:redirect] : record_path(@record_form.model)
+    if params[:record][:aasm_event].present?
+      if @record_form.model.send("may_#{params[:record][:aasm_event]}?")
+        @record_form.model.send("#{params[:record][:aasm_event]}!")
+      end
     else
-      render :edit
+      if @record_form.submit params[:record]
+        redirect_to params[:redirect].present? ? params[:redirect] : record_path(@record_form.model)
+      else
+        render :edit
+      end
     end
   end
 
