@@ -95,7 +95,7 @@ module Tramway::Admin
         new_record_path model: association.class_name,
                         redirect: current_model_record_path(object.model),
                         association.options[:class_name].underscore => {
-                          as || object.model.class.name.underscore => object.id
+                          as || object.model.class.name.underscore.gsub('/', '_') => object.id
                         }
       end
     end
