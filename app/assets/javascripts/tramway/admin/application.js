@@ -5,4 +5,9 @@
 //= require bootstrap-sprockets
 //= require ckeditor/init
 //= require selectize
+//= require clipboard
 //= require_tree .
+
+$(document).ready(function() {
+  let clipboard = new Clipboard('.clipboard-btn');
+})
