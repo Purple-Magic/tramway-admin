@@ -420,6 +420,9 @@ def state
   state_machine_view object, :state
 end
 ```
+
+It takes locales from `I18n.t("state_machines.#{model_name}.#{state_machine_name}.states.#{state_value}")`
+
 #### image_view
 Returns an image in a particular format depending on the parameters of the original image file
 
