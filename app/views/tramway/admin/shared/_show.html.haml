@@ -1,11 +1,6 @@
 - default_page_title ||= nil; on_site_link ||= nil
 - current_title = default_page_title || "#{object.name} | #{model_class.model_name.human.pluralize(:ru)}"
 - title current_title
--#= content_for :sidebar do
--#  - buttons = ::Tramway::Admin.additional_buttons(record: object.model.class, view: :show, project: @application.name)
--#  .btn-group-vertical
--#    - buttons.each do |button|
--#      - build_buttons button.call object
 .page-header
   .row
     .col-md-12
@@ -15,9 +10,9 @@
         = link_to fa_icon('pencil-alt'), edit_path, class: 'btn btn-warning btn-xs'
         - if public_path(object)
           = link_to fa_icon(:share), public_path(object), class: 'btn btn-primary btn-xs'
-        - buttons = ::Tramway::Admin.additional_buttons(record: object.model.class, view: :show, project: @application.name)
+        - buttons = object.additional_buttons[:show]
         - buttons&.each do |button|
-          - build_buttons button.call object
+          - build_button button
 %hr
 .row
   %table.table.table-striped.table-bordered
