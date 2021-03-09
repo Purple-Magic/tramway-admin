@@ -5,7 +5,6 @@ require 'tramway/admin/engine'
 require 'tramway/admin/singleton_models'
 require 'tramway/admin/records_models'
 require 'tramway/admin/forms'
-require 'tramway/admin/additional_buttons'
 require 'tramway/admin/notifications'
 require 'tramway/admin/welcome_page_actions'
 require 'tramway/admin/navbar'
@@ -20,7 +19,6 @@ module Tramway
     class << self
       include ::Tramway::Admin::RecordsModels
       include ::Tramway::Admin::SingletonModels
-      include ::Tramway::Admin::AdditionalButtons
       include ::Tramway::Admin::Forms
       include ::Tramway::Admin::Notifications
       include ::Tramway::Admin::WelcomePageActions
