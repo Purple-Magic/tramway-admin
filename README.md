@@ -526,6 +526,29 @@ en:
         my_dropdown: Very important dropdown
 ```
 
+## Additional buttons to the show view
+
+You can additional buttons to the header of show view of your model. Just add its configuration to the decorator
+
+*app/decorators/your_model_decorator.rb*
+```ruby
+class YourModelDecorator < Tramway::Core::ApplicationDecorator
+  def additional_buttons
+    {
+      show: [ # means that this buttons will be shown on show view only
+        {
+          url: ::Tramway::Export::Engine.routes.url_helpers.export_path(object.id, model: object.class, collection: :tasks),
+          inner: lambda do # inner HTML you want to see in the button
+            fa_icon 'file-excel'
+          end,
+          color: :success # bootstrap button color
+        }
+      ]
+    }
+  end
+end
+```
+
 ## Errors
 
 * **Model or Form is not available** - `params[:model]` or `params[:form]` is empty **OR** current user does not have access to model or form in `params[:model]` or `params[:form]`
