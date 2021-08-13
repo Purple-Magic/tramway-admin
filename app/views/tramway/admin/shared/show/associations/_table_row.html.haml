@@ -1,4 +1,4 @@
-- association_state_machines = object.send("#{association.name}_state_machines")
+- association_state_machines = AASM::StateMachineStore.fetch(association_object.model.class).machine_names - ['default']
 - if (!association_object.is_a?(Array) || !association_object.empty?) && association_object.present?
   %tr{ id: "#{association.name}_#{association_object.id}" }
     %td
