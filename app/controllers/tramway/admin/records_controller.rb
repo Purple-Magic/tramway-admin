@@ -9,7 +9,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
       if params[:filter].is_a? String
         params[:filter] = JSON.parse params[:filter]
       end
-      records = records.ransack(params[:filter]).result 
+      records = records.ransack(params[:filter]).result(distinct: true)
     end
     params[:list_filters]&.each do |filter, value|
       case decorator_class.list_filters[filter.to_sym][:type]
