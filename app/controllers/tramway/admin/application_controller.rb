@@ -21,7 +21,7 @@ module Tramway
       protected
 
       def check_available!
-        raise 'Tramway::Admin - Model or Form is not available' if !model_given? && !form_given?
+        raise 'Tramway::Admin - Model or Form is not available. Looks like current user does not have access to change this model. Update your tramway initializer file' if !model_given? && !form_given?
       end
 
       def check_available_scope!
