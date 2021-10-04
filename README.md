@@ -541,7 +541,8 @@ class YourModelDecorator < Tramway::Core::ApplicationDecorator
           inner: lambda do # inner HTML you want to see in the button
             fa_icon 'file-excel'
           end,
-          color: :success # bootstrap button color
+          color: :success, # bootstrap button color
+          method: :get # HTTP method. get method is a default. Available: :post, :patch: delete
         }
       ]
     }
