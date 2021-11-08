@@ -8,7 +8,7 @@
         = hidden_field_tag :model, params[:model]
         = hidden_field_tag :scope, params[:scope]
         = hidden_field_tag :filter, (params[:filter].is_a?(ActionController::Parameters) ? params[:filter].permit!.to_h.to_json : params[:filter])
-        - decorator_class(model_class).list_filters.each_slice(3) do |slice|
+        - decorator_class(model_class).list_filters&.each_slice(3) do |slice|
           .row-fluid.filters
             - slice.each do |filter|
               - case filter[1][:type]
