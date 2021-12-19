@@ -11,7 +11,7 @@ describe 'Edit admin page' do
     fill_in 'Пароль', with: '123456'
     click_on 'Войти', class: 'btn-success'
 
-    last_user = User.active.last
+    last_user = User.last
     click_on_dropdown 'Администрирование'
     click_on 'Пользователи'
     click_on last_user.id

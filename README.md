@@ -486,7 +486,7 @@ To add notification to application, you need just set queries in initializers.
 # Example from tramway-event gem (you also can push context variables here)
 
 ::Tramway::Admin.set_notificable_queries new_participants: -> (current_user) do
-  ::Tramway::Event::Participant.active.where(participation_state: :requested).send "#{current_user}_scope", current_user.id
+  ::Tramway::Event::Participant.where(participation_state: :requested).send "#{current_user}_scope", current_user.id
 end
 ```
 

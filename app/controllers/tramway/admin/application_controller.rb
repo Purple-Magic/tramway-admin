@@ -30,7 +30,7 @@ module Tramway
 
       def collections_counts
         @counts = decorator_class.collections.reduce({}) do |hash, collection|
-          records = model_class.active.send(collection)
+          records = model_class.send(collection)
           records = records.send "#{current_admin.role}_scope", current_admin.id
           records = records.ransack(params[:filter]).result if params[:filter].present?
           params[:list_filters]&.each do |filter, value|
