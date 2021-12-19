@@ -11,7 +11,7 @@ describe 'Edit admin page' do
     fill_in 'Пароль', with: '123456'
     click_on 'Войти', class: 'btn-success'
 
-    last_admin = Tramway::User::User.active.last
+    last_admin = Tramway::User::User.last
     click_on_dropdown 'Администрирование'
     click_on 'Администраторы'
     click_on last_admin.id
