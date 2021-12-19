@@ -3,7 +3,7 @@
 class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationController
   def index
     scope = params[:scope].present? ? params[:scope] : :all
-    records = model_class.active.order(id: :desc).send scope
+    records = model_class.order(id: :desc).send scope
     records = records.full_text_search params[:search] if params[:search].present?
     if params[:filter].present?
       if params[:filter].is_a? String
@@ -30,7 +30,7 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   end
 
   def show
-    @record = decorator_class.decorate model_class.active.find params[:id]
+    @record = decorator_class.decorate model_class.find params[:id]
   end
 
   def new
@@ -47,11 +47,11 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   end
 
   def edit
-    @record_form = admin_form_class.new model_class.active.find params[:id]
+    @record_form = admin_form_class.new model_class.find params[:id]
   end
 
   def update
-    @record_form = admin_form_class.new model_class.active.find params[:id]
+    @record_form = admin_form_class.new model_class.find params[:id]
     if params[:record][:aasm_event].present?
       if @record_form.model.send("may_#{params[:record][:aasm_event]}?")
         @record_form.model.send("#{params[:record][:aasm_event]}!")
@@ -67,8 +67,8 @@ class Tramway::Admin::RecordsController < ::Tramway::Admin::ApplicationControlle
   end
 
   def destroy
-    record = model_class.active.find params[:id]
-    record.remove!
+    record = model_class.find params[:id]
+    record.destroy
     redirect_to params[:redirect].present? ? params[:redirect] : records_path
   end
 end
