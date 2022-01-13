@@ -192,6 +192,9 @@ en:
 class Admin::YourModelForm < Tramway::Core::ApplicationForm
   properties :title, :description, :text, :date, :logo
 
+  association :associated
+  association :another_polymorphic_associated
+
   def initialize(object)
     super(object).tap do
       form_properties title: :string,
@@ -199,6 +202,8 @@ class Admin::YourModelForm < Tramway::Core::ApplicationForm
         description: :ckeditor,
         date: :date_picker,
         text: :text,
+        associated: :association,
+        another_polymorphic_association: :polymorphic_association,
         birth_date: {
           type: :default,
           input_options: {
@@ -208,6 +213,22 @@ class Admin::YourModelForm < Tramway::Core::ApplicationForm
     end
   end
 end
+```
+
+**NOTE**
+If you want fill inputs of this form, just send query params
+
+```
+params = {
+  your_model: {
+    logo: '/file/url',
+    description: 'some text',
+    text: 'some another text',
+    associated_id: 5,
+    another_polymorphic_associated: 56,
+    another_polymorphic_associated_type: 'AnotherModel'
+  }
+}
 ```
 
 #### 10. Add inheritance to YourModel
