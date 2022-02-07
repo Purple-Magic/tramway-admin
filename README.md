@@ -48,7 +48,6 @@ end
 #### 5. And then execute:
 
 ```bash
-$ bundle
 $ rails g tramway:user:install
 $ rails db:migrate
 ```
