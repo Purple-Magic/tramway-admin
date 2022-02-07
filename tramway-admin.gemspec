@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'selectize-rails'
   s.add_dependency 'smart_buttons', '>= 1.0'
   s.add_dependency 'state_machine_buttons', '>= 1.0'
-  s.add_dependency 'trap', '3.0'
+  s.add_dependency 'trap', '~> 4.0'
   s.add_dependency 'aasm'
 
   s.add_development_dependency 'pg'
