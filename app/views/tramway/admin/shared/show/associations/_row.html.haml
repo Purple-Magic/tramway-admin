@@ -7,7 +7,7 @@
       %td
         = model_class.human_attribute_name association.name
         %hr
-        - if association_type != :has_one || !object.send(association.name).present?
+        - if create_is_available?(association.name) && (association_type != :has_one || !object.send(association.name).present?)
           = link_to "#{I18n.t('helpers.actions.add')} #{model_class.human_attribute_name(association.name).singularize.downcase}", new_associated_record_path(association: association, object: object, as: object.send("#{association.name}_as")), class: 'btn btn-primary'
       %td{ colspan: 2 }
         - if association_type.in? [ :has_one, :belongs_to ]

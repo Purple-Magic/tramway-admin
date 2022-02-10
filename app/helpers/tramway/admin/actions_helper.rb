@@ -21,6 +21,16 @@ module Tramway::Admin::ActionsHelper
     )
   end
 
+  def create_is_available?(association_class)
+    ::Tramway::Admin.action_is_available?(
+      nil,
+      project: (@application_engine || @application.name),
+      model_name: association_class,
+      role: current_admin.role,
+      action: :create
+    )
+  end
+
   # delete_button is in smart-buttons gem
 
   def edit_button(url:, button_options:)
