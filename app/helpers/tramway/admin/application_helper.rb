@@ -17,6 +17,7 @@ module Tramway
       include ::Tramway::Collections::Helper
       include ::Tramway::Core::CopyToClipboardHelper
       include ::Tramway::Admin::TramwayModelHelper
+      include ::Tramway::Admin::FrontendHelper
 
       def object_type(object)
         object_class_name = if object.class.ancestors.include? ::Tramway::Core::ApplicationDecorator

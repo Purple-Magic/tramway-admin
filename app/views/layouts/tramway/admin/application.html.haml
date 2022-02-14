@@ -8,6 +8,10 @@
     = javascript_include_tag 'tramway/admin/application'
     - if File.exists?("#{Rails.root}/app/assets/javascripts/admin/application.js") || File.exists?("#{Rails.root}/app/assets/javascripts/admin/application.js.coffee")
       = javascript_include_tag 'admin/application'
+    - if File.exists?("#{Rails.root}/app/assets/stylesheets/admin/application.css") || File.exists?("#{Rails.root}/app/assets/stylesheets/admin/application.scss")
+      = stylesheet_link_tag 'admin/application'
+    - if File.exists?("#{Rails.root}/app/javascript/packs/admin/application.js")
+      = javascript_pack_tag 'admin/application'
     = csrf_meta_tags
     - if @application.favicon.present?
       = favicon_link_tag @application.favicon
