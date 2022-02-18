@@ -15,7 +15,7 @@
     .col
       = render 'search', model_class: model_class
 %hr
-%ul.nav.nav-tabs
+%ul.nav.nav-tabs.mb-3
   - if params[:search].present?
     %li.nav-item
       = link_to search_tab_title(@records.total_count), '#', class: 'nav-link active'
