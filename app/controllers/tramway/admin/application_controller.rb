@@ -20,6 +20,10 @@ module Tramway
 
       protected
 
+      def admin_model
+        ::Tramway::Admin.admin_model
+      end
+
       def check_available!
         raise 'Tramway::Admin - Model or Form is not available. Looks like current user does not have access to change this model. Update your tramway initializer file' if !model_given? && !form_given?
       end
@@ -120,7 +124,7 @@ module Tramway
       end
 
       def current_admin
-        user = Tramway::User::User.find_by id: session[:admin_id]
+        user = admin_model.find_by id: session[:admin_id]
         return false unless user
 
         Tramway::User::UserDecorator.decorate user

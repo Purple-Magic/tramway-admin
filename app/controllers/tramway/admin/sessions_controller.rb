@@ -6,11 +6,11 @@ class Tramway::Admin::SessionsController < ::Tramway::Admin::ApplicationControll
   skip_before_action :collections_counts
 
   def new
-    @session_form = ::Tramway::Auth::SessionForm.new ::Tramway::User::User.new
+    @session_form = ::Tramway::Auth::SessionForm.new admin_model.new
   end
 
   def create
-    @session_form = ::Tramway::Auth::SessionForm.new ::Tramway::User::User.find_or_initialize_by email: params[:user][:email]
+    @session_form = ::Tramway::Auth::SessionForm.new admin_model.find_or_initialize_by email: params[:user][:email]
     if @session_form.validate params[:user]
       admin_sign_in @session_form.model
       redirect_to Tramway::Admin::Engine.routes.url_helpers.root_path
