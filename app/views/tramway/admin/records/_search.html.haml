@@ -3,8 +3,9 @@
     .d-flex.flex-row-reverse.filters
       = form_tag records_path, class: 'form-inline', method: :get do |f|
         - if searchable_model?(model_class)
-          .col-md-8
+          .input-group
             = text_field_tag :search, params[:search], class: 'text form-control'
+            = submit_tag t('helpers.actions.search'), class: 'btn btn-primary'
         = hidden_field_tag :model, params[:model]
         = hidden_field_tag :scope, params[:scope]
         = hidden_field_tag :filter, (params[:filter].is_a?(ActionController::Parameters) ? params[:filter].permit!.to_h.to_json : params[:filter])
@@ -31,5 +32,3 @@
                     $('#filter_datepicker_begin_date').datepicker();
                     $('#filter_datepicker_end_date').datepicker();
                   });
-        .col-md-4.submit
-          = submit_tag t('helpers.actions.search'), class: 'btn btn-primary'
