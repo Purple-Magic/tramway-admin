@@ -79,6 +79,36 @@ module Tramway
           new_hash.merge! pair[0].to_s => pair[1]
         end
       end
+
+      def admin_model
+        @@auth_config.first[:user_model]
+      end
+
+      def auth_config
+        @@auth_config ||= [{ user_model: ::Tramway::User::User, auth_attributes: :email }]
+      end
+
+      def auth_config=(params)
+        if params.is_a? Hash
+          @@auth_config = [params]
+        elsif params.is_a? Array
+          @@auth_config = params
+        end
+      end
+
+      def user_based_models
+        @@auth_config ||= []
+        @@auth_config.map do |conf|
+          conf[:user_model]
+        end
+      end
+
+      def auth_attributes
+        @@auth_config ||= []
+        @@auth_config.reduce({}) do |hash, conf|
+          hash.merge! conf[:user_model] => conf[:auth_attributes]
+        end
+      end
     end
   end
 end
