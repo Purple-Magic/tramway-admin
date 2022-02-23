@@ -574,6 +574,13 @@ end
 
 * **Model or Form is not available** - `params[:model]` or `params[:form]` is empty **OR** current user does not have access to model or form in `params[:model]` or `params[:form]`
 
+## Change admin user base model
+
+*config/initializers/tramway.rb*
+```ruby
+::Tramway::Admin.auth_config = { user_model: User, auth_attributes: %i[email username] }
+```
+
 ## Good features
 
 ### Get actions log in admin panel
