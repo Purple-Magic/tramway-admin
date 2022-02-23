@@ -81,11 +81,12 @@ module Tramway
       end
 
       def admin_model
-        @@auth_config.first[:user_model]
+        auth_config.first[:user_model]
       end
 
       def auth_config
         @@auth_config ||= [{ user_model: ::Tramway::User::User, auth_attributes: :email }]
+        @@auth_config
       end
 
       def auth_config=(params)
