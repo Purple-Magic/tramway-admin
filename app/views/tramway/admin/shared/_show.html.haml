@@ -10,7 +10,7 @@
         = link_to fa_icon('pencil-alt'), edit_path, class: 'btn btn-warning btn-xs'
         - if public_path(object)
           = link_to fa_icon(:share), public_path(object), class: 'btn btn-primary btn-xs'
-        - buttons = object.additional_buttons[:show]
+        - buttons = object.additional_buttons&.dig :show
         - buttons&.each do |button|
           - build_button button
 %hr
