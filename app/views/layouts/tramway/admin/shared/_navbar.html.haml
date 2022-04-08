@@ -4,7 +4,7 @@
   - else
     .container-fluid
       = link_to @application&.try(:title) || @application&.public_name || t('aplication.title'), ::Tramway::Admin::Engine.routes.url_helpers.root_path, class: 'navbar-brand'
-      %button.navbar-toggler.collapsed{ aria: { controls: :navbar, expanded: "false", label: 'Toggle Navigation' }, data: { target: "#navbar", toggle: :collapse }, type: :button }
+      %button.navbar-toggler.collapsed{ aria: { controls: :navbar, expanded: "false", label: 'Toggle Navigation' }, data: { bs: { target: "#navbar" , toggle: :collapse } }, type: :button }
         %span.navbar-toggler-icon
       .navbar-collapse.collapse#navbar
         - if current_admin
@@ -30,7 +30,7 @@
                       - if sub_item.values.first == :record
                         = dropdown_model_item model: model, route: ::Tramway::Admin::Engine.routes.url_helpers.records_path(model: model, scope: decorator_class(model).collections.first), pluralize: plural(model.constantize.model_name).capitalize
 
-      %ul.nav.navbar-nav.ml-auto.justify-content-end
+      %ul.nav.navbar-nav.ml-auto.justify-content-end.navbar-collapse.collapse
         - if current_admin
           %li.nav-item
             %span.nav-link
