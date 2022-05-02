@@ -3,7 +3,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require ckeditor/init
-//= require selectize
 //= require clipboard
 //= require_tree .
 
