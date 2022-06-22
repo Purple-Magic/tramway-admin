@@ -5,8 +5,9 @@
     %td
       = link_to association_object.name, record_path(association_object.id, model: association.options[:class_name])
     - if association_object.model.class.state_machines_names.count > 1
+      - state_machine_names = association_object.listed_state_machines || association_object.model.class.state_machines_names
       %td
-        - association_object.model.class.state_machines_names.each do |state_method|
+        - state_machine_names.each do |state_method|
           - unless state_method == 'default'
             = state_events_buttons association_object, state_method: state_method, model_param_name: :record, controller: 'tramway/admin/records', action: :update, parameters: { redirect: current_model_record_path(object.id), model: association_object.class.model_name }, button_options: { class: :smart_button }
     %td{ style: 'display: flex; justify-content: space-evenly' }
