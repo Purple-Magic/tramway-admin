@@ -11,7 +11,6 @@ How to use my plugin.
 ```ruby
 gem 'tramway-admin'
 gem 'tramway-user'
-gem 'aasm'
 gem 'bcrypt'
 gem 'haml-rails'
 gem 'selectize-rails'
