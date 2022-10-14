@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'dotenv/load'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('dummy/config/environment', __dir__)

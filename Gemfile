@@ -3,7 +3,10 @@
 source 'https://rubygems.org'
 gemspec
 
+gem 'aasm'
+
 group :test do
+  gem 'dotenv'
   gem 'selenium-webdriver'
   gem 'time_difference'
   gem 'webdrivers', '>= 2.1.0'
@@ -11,6 +14,7 @@ group :test do
   gem 'whenever-test'
 
   gem 'capybara', '>= 2.15'
+  gem 'capybara_helpers'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'faker'
   gem 'json_api_test_helpers', '1.2'
