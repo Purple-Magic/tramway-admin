@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'tramway-core', '>= 4.1.3.2'
+  s.add_dependency 'tramway-core', '>= 5.0'
   s.add_dependency 'tramway-auth', '>= 2.0.1'
   s.add_dependency 'tramway-user', '>= 2.1.3.2'
   s.add_dependency 'bootstrap-kaminari-views', '0.0.5'
@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
   s.add_dependency 'kaminari', '>= 1.1.1'
   s.add_dependency 'ransack'
-  s.add_dependency 'selectize-rails'
   s.add_dependency 'smart_buttons', '>= 1.0'
   s.add_dependency 'state_machine_buttons', '>= 1.0'
   s.add_dependency 'trap', '~> 4.0'
