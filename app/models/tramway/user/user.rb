@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Tramway::User::User < ::Tramway::Core::ApplicationRecord
+class Tramway::User::User < ::Tramway::ApplicationRecord
   has_secure_password # FIXME: remove repeating from tramway-user
   include ::AASM
 

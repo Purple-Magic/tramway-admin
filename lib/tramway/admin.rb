@@ -40,7 +40,7 @@ module Tramway
           error = Tramway::Error.new(
             plugin: :admin,
             method: :get_models_by_key,
-            message: "Looks like you have not create at least one instance of #{Tramway::Core.application.model_class} model OR Tramway Application Model is nil"
+            message: "Looks like you have not create at least one instance of #{Tramway.application.model_class} model OR Tramway Application Model is nil"
           )
           raise error.message
         end

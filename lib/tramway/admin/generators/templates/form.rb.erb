@@ -1,4 +1,4 @@
-class <%= user_role.capitalize %>::<%= class_name %>Form < Tramway::Core::ApplicationForm
+class <%= user_role.capitalize %>::<%= class_name %>Form < Tramway::ApplicationForm
   properties <%= form_attributes.map{ |a| ":#{a}" }.join(', ') %>
 
   def initialize(object)

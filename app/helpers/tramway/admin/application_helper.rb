@@ -11,16 +11,16 @@ module Tramway
       include ::Tramway::Admin::RecordsHelper
       include ::Tramway::Admin::SingletonHelper
       include ::Tramway::Admin::NavbarHelper
-      include ::Tramway::Core::InputsHelper
+      include ::Tramway::InputsHelper
       include ::Tramway::Admin::FocusGeneratorHelper
       include ::Tramway::Admin::ActionsHelper
       include ::Tramway::Collections::Helper
-      include ::Tramway::Core::CopyToClipboardHelper
+      include ::Tramway::CopyToClipboardHelper
       include ::Tramway::Admin::TramwayModelHelper
       include ::Tramway::Admin::FrontendHelper
 
       def object_type(object)
-        object_class_name = if object.class.ancestors.include? ::Tramway::Core::ApplicationDecorator
+        object_class_name = if object.class.ancestors.include? ::Tramway::ApplicationDecorator
                               object.class.model_class.name
                             else
                               object.class.name

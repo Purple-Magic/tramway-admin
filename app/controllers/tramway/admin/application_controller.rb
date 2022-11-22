@@ -4,7 +4,7 @@ require 'tramway/helpers/class_name_helpers'
 
 module Tramway
   module Admin
-    class ApplicationController < ::Tramway::Core::ApplicationController
+    class ApplicationController < ::Tramway::ApplicationController
       include Tramway::ClassNameHelpers
       include Tramway::AuthManagement
       include RecordRoutesHelper
@@ -56,8 +56,8 @@ module Tramway
       end
 
       def application
-        if ::Tramway::Core.application
-          @application = Tramway::Core.application&.model_class&.first || Tramway::Core.application
+        if ::Tramway.application
+          @application = Tramway.application&.model_class&.first || Tramway.application
         end
       end
 

@@ -9,7 +9,7 @@ module Tramway
         class_option :user_role, type: :string, default: 'admin'
 
         def run_decorator_generators
-          project = Tramway::Core.application.name
+          project = Tramway.application.name
           ::Tramway::Admin.available_models_for(project).map do |model|
             generate 'tramway:admin:model', model.to_s, "--user-role=#{options[:user_role]}"
           end

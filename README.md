@@ -104,7 +104,7 @@ Or you can create forms and decorators manually as it written below:
 
 *app/decorators/your_model_decorator.rb*
 ```ruby
-class YourModelDecorator < Tramway::Core::ApplicationDecorator
+class YourModelDecorator < Tramway::ApplicationDecorator
   decorate_associations :messages, :posts
 
   class << self
@@ -186,7 +186,7 @@ en:
 
 *app/forms/admin/your_model_form.rb
 ```ruby
-class Admin::YourModelForm < Tramway::Core::ApplicationForm
+class Admin::YourModelForm < Tramway::ApplicationForm
   properties :title, :description, :text, :date, :logo
 
   association :associated
@@ -232,7 +232,7 @@ params = {
 
 *app/models/your_model.rb*
 ```ruby
-class YourModel < Tramway::Core::ApplicationRecord
+class YourModel < Tramway::ApplicationRecord
 end
 ```
 
@@ -249,7 +249,7 @@ search_by *attributes, **associations # `attributes` and `associations` should b
 Example:
 
 ```ruby
-class YourModel < Tramway::Core::ApplicationRecord
+class YourModel < Tramway::ApplicationRecord
   search_by :my_attribute, :another_attribute, my_association: [ :my_association_attribute, :another_my_association_attribute ]
 ```
 
@@ -298,14 +298,14 @@ We have models Game and Packs.
 
 *app/models/game.rb*
 ```ruby
-class Game < Tramway::Core::ApplicationRecord
+class Game < Tramway::ApplicationRecord
   has_many :packs
 end
 ```
 
 *app/models/pack.rb*
 ```ruby
-class Pack < Tramway::Core::ApplicationRecord
+class Pack < Tramway::ApplicationRecord
   belongs_to :game
 end
 ```
@@ -316,7 +316,7 @@ end
 
 *app/decorators/pack_decorator.rb*
 ```ruby
-class GameDecorator < Tramway::Core::ApplicationDecorator
+class GameDecorator < Tramway::ApplicationDecorator
   decorate_association :packs, as: :game # we recommend you to add association name in Pack model. You need it if association name of Game in Pack is not `game`
 end
 ```
@@ -327,14 +327,14 @@ We have models Game and Packs.
 
 *app/models/game.rb*
 ```ruby
-class Game < Tramway::Core::ApplicationRecord
+class Game < Tramway::ApplicationRecord
   has_and_belongs_to_many :packs
 end
 ```
 
 *app/models/pack.rb*
 ```ruby
-class Pack < Tramway::Core::ApplicationRecord
+class Pack < Tramway::ApplicationRecord
   has_and_belongs_to_many :games
 end
 ```
@@ -345,7 +345,7 @@ end
 
 *app/decorators/pack_decorator.rb*
 ```ruby
-class PackDecorator < Tramway::Core::ApplicationDecorator
+class PackDecorator < Tramway::ApplicationDecorator
   decorate_association :games
 end
 ```
@@ -354,7 +354,7 @@ end
 
 *app/forms/admin/packs/add_game_form.rb*
 ```ruby
-class Admin::Packs::AddGameForm < Tramway::Core::ApplicationForm
+class Admin::Packs::AddGameForm < Tramway::ApplicationForm
   properties :game_ids
   association :games
 
@@ -375,7 +375,7 @@ end
 
 *app/forms/admin/packs/remove_game_form.rb*
 ```ruby
-class Admin::Packs::RemoveGameForm < Tramway::Core::ApplicationForm
+class Admin::Packs::RemoveGameForm < Tramway::ApplicationForm
   properties :id
 
   def submit(params)
@@ -550,7 +550,7 @@ You can additional buttons to the header of show view of your model. Just add it
 
 *app/decorators/your_model_decorator.rb*
 ```ruby
-class YourModelDecorator < Tramway::Core::ApplicationDecorator
+class YourModelDecorator < Tramway::ApplicationDecorator
   def additional_buttons
     {
       show: [ # means that this buttons will be shown on show view only
