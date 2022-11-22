@@ -1,4 +1,4 @@
-//= require tramway/core/application
+//= require tramway/application
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
